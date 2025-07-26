@@ -13,15 +13,40 @@
     <header>
         <h1>Minecraft Server Utils</h1>
         <p>A clean and minimalist hub for downloading Minecraft server software.</p>
-        <div class="search-container">
-            <i data-lucide="search"></i>
-            <input type="text" id="search-input" placeholder="Search servers or tags (e.g., performance, modding)...">
+        <div class="controls-container">
+            <div class="search-container">
+                <i data-lucide="search"></i>
+                <input type="text" id="search-input" placeholder="Search servers or tags (e.g., performance, modding)...">
+            </div>
+            <div class="view-controls">
+                <button id="grid-view-btn" class="view-btn active" title="Grid View">
+                    <i data-lucide="layout-grid"></i>
+                </button>
+                <button id="list-view-btn" class="view-btn" title="List View">
+                    <i data-lucide="list"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <main id="app-container">
         <!-- Server software categories and items will be dynamically inserted here -->
     </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#">Legal Notice</a>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+                <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                <a href="#" aria-label="Discord"><i data-lucide="message-square"></i></a>
+            </div>
+        </div>
+    </footer>
     
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>

@@ -37,10 +37,21 @@ header p {
     margin-right: auto;
 }
 
+.controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 2rem auto 0;
+    flex-wrap: wrap;
+}
+
 .search-container {
     position: relative;
+    flex-grow: 1;
+    min-width: 280px;
     max-width: 500px;
-    margin: 2rem auto 0;
 }
 
 .search-container .lucide {
@@ -97,6 +108,7 @@ header p {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
+    align-items: start;
 }
 
 .server-card {
@@ -107,6 +119,7 @@ header p {
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
 }
 
 .server-card:hover {
@@ -130,6 +143,7 @@ header p {
 .server-info h3 {
     margin: 0;
     font-size: 1.5rem;
+    margin-bottom: 5px;
 }
 
 .server-info .latest-version {
@@ -169,6 +183,7 @@ header p {
     display: flex;
     gap: 0.75rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .download-latest-btn {
@@ -191,6 +206,26 @@ header p {
     background-color: var(--accent-color-hover);
 }
 
+.source-btn {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.source-btn:hover {
+    background-color: var(--border-color);
+}
+
 .toggle-history-btn {
     background-color: transparent;
     border: 1px solid var(--border-color);
@@ -205,6 +240,7 @@ header p {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .toggle-history-btn span {
@@ -233,12 +269,39 @@ header p {
 }
 
 .version-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    overflow: hidden;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
+	overflow-y: auto; /* vertical scroll only */
+	max-height: 300px; /* adjust height as needed */
+	scroll-behavior: smooth;
+}
+
+/* Scrollbar Styling (WebKit - Chrome, Edge, Safari) */
+.version-list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.version-list::-webkit-scrollbar-track {
+	background: transparent;
+	border-radius: 6px;
+}
+
+.version-list::-webkit-scrollbar-thumb {
+	background-color: var(--border-color);
+	border-radius: 6px;
+}
+
+.version-list::-webkit-scrollbar-thumb:hover {
+	background-color: var(--border-color);
+}
+
+/* Scrollbar for Firefox */
+.version-list {
+	scrollbar-width: thin;
+	scrollbar-color: var(--border-color) transparent;
 }
 
 .version-item {
@@ -276,7 +339,114 @@ header p {
     background-color: var(--accent-color-hover);
 }
 
+.view-btn{
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.6rem;
+    justify-content: center;
+    color: var(--text-muted-color);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.view-btn:hover{
+    background-color: var(--border-color);
+}
+
+.view-btn.active{
+    border: 1px solid var(--text-color);
+}
+
 .download-btn .lucide {
     width: 16px;
     height: 16px;
+}
+
+/* List View Styles */
+.server-grid.list-view {
+    grid-template-columns: 1fr;
+}
+
+.server-grid.list-view .server-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+}
+
+.server-grid.list-view .server-card:hover {
+    transform: translateY(0); /* Disable vertical shift */
+}
+
+.server-grid.list-view .card-header {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.server-grid.list-view .card-body {
+    flex-grow: 1;
+    margin-bottom: 0;
+    width: 30%;
+}
+
+.server-grid.list-view .card-body p {
+    margin-bottom: 0.5rem;
+}
+
+.server-grid.list-view .card-footer {
+    margin-left: auto;
+    flex-shrink: 0;
+    width: 30%;
+}
+
+.server-grid.list-view .version-history {
+    width: 100%;
+    order: 5; /* Ensure it appears at the bottom */
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 2rem;
+    margin-top: 3rem;
+    color: var(--text-muted-color);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-muted-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--text-color);
+}
+
+.footer-links .separator {
+    margin: 0 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--text-muted-color);
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: var(--text-color);
 }
